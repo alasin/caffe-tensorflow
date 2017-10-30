@@ -174,9 +174,9 @@ class Network(object):
             stride_i = stride_shape[i]
             input_i = input_shape[i]
             if padding == 'SAME':   
-                out_shape.append(Math.ceil((input_i) / float(stride_i) ))
+                out_shape.append(tf.ceil((input_i) / float(stride_i) ))
             else:
-                out_shape.append(Math.ceil((input_i - kernel_i + 1) / float(stride_i) ))
+                out_shape.append(tf.ceil((input_i - kernel_i + 1) / float(stride_i) ))
             
             #out_shape.append(Math.floor((input_i + 2 * pad_i - kernel_i) / float(stride_i) + 1))
         deconv = lambda i, k: tf.nn.conv2d_transpose(i, k, output_shape=out_shape, strides=stride_shape, padding=padding)
